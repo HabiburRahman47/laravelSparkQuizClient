@@ -29,9 +29,13 @@ export default {
     },
     methods:{
         userLogin(){
-            axios.post('/login',{
-                email:this.user.email ,
+            axios.post('/oauth/token',{
+                username:this.user.email ,
                 password:this.user.password ,
+                client_id: 2,
+                client_secret:"u8R0eFx8rOvoq9B2mAAp04I53M7xroRcmbrRWpJJ",
+                grant_type:"password"
+
             })
             .then(response => {
                   console.log(response);

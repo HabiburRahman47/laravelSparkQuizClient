@@ -15,7 +15,7 @@ window.iziToast = iziTostJs;
 import axios from 'axios';
 window.axios = axios;
 window.token = localStorage.getItem('AToken');
-axios.defaults.baseURL = 'http://localhost/api-restfull/public/api';
+axios.defaults.baseURL = 'http://quiz.test/api/v1';
 axios.defaults.headers.common['Authorization'] = 'Bearer '+token;
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 import { Form, HasError, AlertError } from 'vform'

@@ -77,6 +77,7 @@
     methods: {
       logout() {
         localStorage.removeItem("AToken");
+        axios.defaults.headers.common["Authorization"] = "";
         this.$router.push("/login");
       },
     },

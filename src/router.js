@@ -2,6 +2,10 @@ import Vue from "vue";
 import Router from "vue-router";
 import Dashboard from "./views/frontend/dashboard.vue";
 import auth from "./middleware/auth";
+//Quiz component
+import QuizIndex from "./views/frontend/quiz/index.vue";
+import QuizCreate from "./views/frontend/quiz/create.vue";
+import QuizEdit from "./views/frontend/quiz/edit.vue";
 
 Vue.use(Router);
 
@@ -49,42 +53,29 @@ const router = new Router({
         middleware: auth,
       },
       component: Dashboard,
+      children: [
+        {
+          path: "profile",
+          name: "profile",
+          component: () => import("./views/frontend/profile"),
+        },
+        {
+          path: "quiz-index",
+          name: "quiz-index",
+          component: QuizIndex,
+        },
+        {
+          path: "quiz-create",
+          name: "quiz-create",
+          component: QuizCreate,
+        },
+        {
+          path: "quiz-edit",
+          name: "quiz-edit",
+          component: QuizEdit,
+        },
+      ],
     },
-    // {
-    //   path:'/dashboard',
-    //   name:'dashboard',
-    //   component:()=>import('../src/views/admin/admin-master.vue'),
-    //   children:[
-    //     {
-    //       path:'add-category',
-    //       name:'add-category',
-    //       component:()=>import('../src/views/admin/category/add_category.vue'),
-    //     },
-    //     {
-    //       path:'all-category',
-    //       name:'all-category',
-    //       component:()=>import('../src/views/admin/category/all-categories.vue'),
-    //     },
-    //     {
-    //       path:'edit-category/:category_id',
-    //       name:'edit-category',
-    //       component:()=>import('../src/views/admin/category/edit_category.vue'),
-    //     },
-    //     {
-    //       path:'all-products',
-    //       name:'all-products',
-    //       component:()=>import('../src/views/admin/product/all-products.vue'),
-    //     },
-    //   ],
-    // },
-    // {
-    //   path: '/about',
-    //   name: 'about',
-    //   // route level code-splitting
-    //   // this generates a separate chunk (about.[hash].js) for this route
-    //   // which is lazy-loaded when the route is visited.
-    //   component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
-    // }
   ],
   mode: "history",
 });
